@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Deploy whenever you push to the main branch...
+  push:
+    branches: 'main'
+  # ...and allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          # For a project page served at https://<user>.github.io/<repo>/,
+          # the base path must be '/<repo>'. This uses the repo name
+          # automatically, so you don't have to hardcode it.
+          #
+          # If you later move to a custom domain or a <user>.github.io repo,
+          # set this to an empty string instead.
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Must match the `pages` option in svelte.config.js (adapter-static).
+          path: 'build/'
+
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+
+    # Permissions required for GitHub Pages deployment.
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
