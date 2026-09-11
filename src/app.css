@@ -3,13 +3,35 @@
    base element styles, and small utility classes. */
 
 :root {
-	--color-bg: #fbf9f6;
-	--color-surface: #ffffff;
-	--color-text: #23201d;
+	/* Two-tone text tokens. Use the dark text on light surfaces, and the light
+	   text on dark backgrounds. */
+	--color-text-light: #fbf9f6;
+	--color-text-dark: #23201d;
+
+	/* Dark page background with light text. */
+	--color-bg: #222134;
+	--color-text: var(--color-text-light);
+	--color-border: #222134;
+
+	/* Light surfaces (header, footer, cards, inputs) with dark text on them. */
+	--color-surface: #fbf9f6;
+	--color-surface-text: var(--color-text-dark);
+
 	--color-muted: #6b635b;
-	--color-accent: #7c4d3a;
-	--color-accent-hover: #613829;
-	--color-border: #e7e0d8;
+
+	/* Two teal tokens for accessibility:
+	   - accent (bright): teal used as TEXT on the dark background (links, ledes)
+	     and as the active underline on dark. Passes AA as text on --color-bg.
+	   - accent-strong (darker): used where the teal needs light text on top of it
+	     (button fills) or as a UI element on light surfaces (active underline on
+	     the light header). Passes AA with white text and as a UI indicator. */
+	--color-accent: #5aaa95;
+	--color-accent-strong: #37776a;
+	/* Button-fill hover (darker; used with white text). */
+	--color-accent-hover: #2f6459;
+	/* Link-text hover on the dark background (lighter, so it brightens rather
+	   than darkens into the page). */
+	--color-accent-light: #77c0ad;
 
 	/* Web fonts loaded via Google Fonts in app.html. The remaining families are
 	   fallbacks used until the web font loads, or if it fails to load.
@@ -34,6 +56,14 @@ html {
 
 body {
 	margin: 0;
+	/* Full-height flex column so the footer sits at the bottom of the viewport
+	   even when there isn't enough content to fill the screen. The layout's
+	   header/main/footer act as this column's items thanks to the
+	   `display: contents` wrapper in app.html. */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100dvh;
 	background: var(--color-bg);
 	color: var(--color-text);
 	font-family: var(--font-body);
@@ -47,8 +77,8 @@ h1,
 h2,
 h3 {
 	font-family: var(--font-heading);
-	/* Source Serif 4 Light — elegant but with a bit more presence than ExtraLight. */
-	font-weight: 300;
+	/* Source Serif 4 Regular. */
+	font-weight: 400;
 	line-height: 1.2;
 	letter-spacing: 0;
 }
@@ -70,7 +100,7 @@ a {
 }
 
 a:hover {
-	color: var(--color-accent-hover);
+	color: var(--color-accent-light);
 }
 
 img {
@@ -98,7 +128,7 @@ img {
 	font-weight: 600;
 	padding: 0.7rem 1.4rem;
 	border-radius: var(--radius);
-	background: var(--color-accent);
+	background: var(--color-accent-strong);
 	color: #fff;
 	text-decoration: none;
 	border: none;
@@ -113,7 +143,9 @@ img {
 
 /* Accessible focus ring for keyboard users */
 :focus-visible {
-	outline: 3px solid var(--color-accent);
+	/* Strong teal so the focus ring stays visible on both the dark background
+	   and the light surfaces (header, cards, inputs). */
+	outline: 3px solid var(--color-accent-strong);
 	outline-offset: 2px;
 }
 
