@@ -102,7 +102,7 @@
 
 <style>
   .lede {
-    color: var(--color-muted);
+    color: var(--color-accent);
     max-width: 34rem;
   }
   form {
@@ -128,11 +128,11 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     background: var(--color-surface);
-    color: var(--color-text);
+    color: var(--color-surface-text);
   }
   input:focus,
   textarea:focus {
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-strong);
   }
   textarea {
     resize: vertical;
@@ -145,11 +145,21 @@
   .notice.success {
     background: #edf7ee;
     border: 1px solid #bfe0c2;
+    /* Dark text: the notice sits on a light background, so it must not inherit
+       the page's light body text (which would be near-invisible here). */
+    color: var(--color-text-dark);
   }
   .notice.error {
     background: #fdeeee;
     border: 1px solid #f0c2c2;
     color: #8a2a2a;
+  }
+  /* Links inside the light notice boxes need the darker teal to stay readable. */
+  .notice a {
+    color: var(--color-accent-strong);
+  }
+  .notice a:hover {
+    color: var(--color-accent-hover);
   }
   .notice p {
     margin: 0 0 0.5rem;

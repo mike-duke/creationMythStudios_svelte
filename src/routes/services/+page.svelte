@@ -37,7 +37,7 @@
 <style>
   .lede {
     font-size: 1.2rem;
-    color: var(--color-muted);
+    color: var(--color-accent);
     max-width: 34rem;
   }
   .services {
@@ -47,6 +47,7 @@
   }
   .card {
     background: var(--color-surface);
+    color: var(--color-surface-text);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.5rem 1.75rem;
@@ -55,7 +56,7 @@
     margin-top: 0;
   }
   .summary {
-    color: var(--color-text);
+    color: var(--color-surface-text);
   }
   .card ul {
     margin: 0.75rem 0 1rem;

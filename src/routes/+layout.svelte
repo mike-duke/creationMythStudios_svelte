@@ -2,10 +2,20 @@
   import "../app.css";
   import { base } from "$app/paths";
   import { page } from "$app/state";
+  import { afterNavigate } from "$app/navigation";
   import { navLinks, site } from "$lib/config";
 
   // `children` is the current page's content (like React's children).
   let { children } = $props();
+
+  // Whether the mobile nav menu is open. Reactive state (like React's useState).
+  let menuOpen = $state(false);
+
+  // Close the menu after any navigation, so tapping a link on mobile collapses
+  // the menu and shows the new page.
+  afterNavigate(() => {
+    menuOpen = false;
+  });
 
   // Normalise a path for active-link comparison: strip the base prefix and any
   // trailing slash so "/about/" matches the "/about" nav entry.
@@ -23,10 +33,28 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<svelte:window
+  onkeydown={(e) => {
+    if (e.key === "Escape") menuOpen = false;
+  }}
+/>
+
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="{base}/">{site.name}</a>
-    <nav aria-label="Primary">
+
+    <button
+      class="nav-toggle"
+      aria-expanded={menuOpen}
+      aria-controls="primary-nav"
+      aria-label={menuOpen ? "Close menu" : "Open menu"}
+      onclick={() => (menuOpen = !menuOpen)}
+    >
+      <span class="nav-toggle-bar" class:open={menuOpen}></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <nav id="primary-nav" aria-label="Primary" class:open={menuOpen}>
       <ul>
         {#each navLinks as link (link.href)}
           <li>
@@ -59,7 +87,7 @@
     position: absolute;
     left: -999px;
     top: 0;
-    background: var(--color-accent);
+    background: var(--color-accent-strong);
     color: #fff;
     padding: 0.5rem 1rem;
     z-index: 10;
@@ -70,14 +98,15 @@
 
   .site-header {
     background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
+    color: var(--color-surface-text);
+    /* `sticky` also establishes the positioning context for the mobile nav
+       dropdown, which is absolutely positioned below the header. */
     position: sticky;
     top: 0;
     z-index: 5;
   }
   .header-inner {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem 1.5rem;
@@ -87,42 +116,129 @@
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 1.15rem;
-    color: var(--color-text);
+    color: var(--color-surface-text);
     text-decoration: none;
     letter-spacing: -0.01em;
   }
 
-  nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
-    list-style: none;
-    margin: 0;
+  /* --- Hamburger toggle button (mobile only) --- */
+  .nav-toggle {
+    /* Sized to a comfortable 44px tap target. */
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-surface-text);
     padding: 0;
   }
+  /* The middle bar; ::before and ::after are the top and bottom bars. */
+  .nav-toggle-bar,
+  .nav-toggle-bar::before,
+  .nav-toggle-bar::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+  .nav-toggle-bar::before {
+    transform: translateY(-7px);
+  }
+  .nav-toggle-bar::after {
+    transform: translateY(5px); /* 7px minus the 2px bar height */
+  }
+  /* Open state: morph the three bars into an X. */
+  .nav-toggle-bar.open {
+    background: transparent;
+  }
+  .nav-toggle-bar.open::before {
+    transform: translateY(0) rotate(45deg);
+  }
+  .nav-toggle-bar.open::after {
+    transform: translateY(-2px) rotate(-45deg);
+  }
+
+  /* --- Nav: mobile-first (collapsed dropdown) --- */
+  nav {
+    /* Hidden by default on mobile; shown when .open is applied. */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  nav.open {
+    display: block;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 1.25rem 1rem;
+  }
   nav a {
+    display: block;
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--color-muted);
     text-decoration: none;
-    padding: 0.25rem 0;
+    padding: 0.6rem 0;
     border-bottom: 2px solid transparent;
   }
   nav a:hover {
-    color: var(--color-text);
+    color: var(--color-surface-text);
   }
   nav a.active {
-    color: var(--color-text);
-    border-bottom-color: var(--color-accent);
+    color: var(--color-surface-text);
+    /* Darker teal so the underline meets the 3:1 UI contrast bar against the
+       light header background. */
+    border-bottom-color: var(--color-accent-strong);
+  }
+
+  /* --- Desktop: inline nav, no hamburger --- */
+  @media (min-width: 640px) {
+    .nav-toggle {
+      display: none;
+    }
+    nav {
+      display: block;
+      position: static;
+      background: none;
+      border-top: none;
+      box-shadow: none;
+    }
+    nav ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      padding: 0;
+    }
+    nav a {
+      display: inline-block;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+    }
   }
 
   main {
-    min-height: 60vh;
+    /* Grow to fill space between header and footer, pushing the footer to the
+       bottom of the viewport on short pages. */
+    flex: 1;
     padding-block: 2.5rem 4rem;
   }
 
   .site-footer {
-    border-top: 1px solid var(--color-border);
     background: var(--color-surface);
     color: var(--color-muted);
     font-family: var(--font-body);
