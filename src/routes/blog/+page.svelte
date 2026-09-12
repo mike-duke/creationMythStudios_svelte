@@ -37,7 +37,7 @@
 
 <style>
   .lede {
-    color: var(--color-muted);
+    color: var(--color-accent);
   }
   .post-list {
     list-style: none;
