@@ -3,15 +3,15 @@
 
 export const site = {
 	name: 'Creation Myth Studios',
-	tagline: 'Freelance fiction editing',
+	tagline: 'Dolor sit amet',
 	// Used in <title> and meta descriptions.
 	description:
-		'Freelance fiction editing — developmental editing, line editing, and copyediting for novelists and short-story writers.',
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 	// Your Formspree form endpoint. Replace with your real form ID.
 	// It looks like: https://formspree.io/f/xxxxxxxx
 	formspreeEndpoint: 'https://formspree.io/f/your-form-id',
 	// Contact email shown on the site (optional).
-	email: 'hello@creationmythstudios.com'
+	email: 'creationmythstudios@gmail.com'
 };
 
 // Primary navigation. `href` values are root-relative; the layout prefixes them

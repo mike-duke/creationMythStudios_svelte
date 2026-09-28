@@ -6,13 +6,13 @@
 
 <svelte:head>
   <title>Services — {site.name}</title>
-  <meta name="description" content="Editing services offered by {site.name}." />
+  <meta name="description" content="Lorem ipsum dolor sit amet consectetur." />
 </svelte:head>
 
-<h1>Services</h1>
+<h1>Lorem Ipsum</h1>
 <p class="lede">
-  Not sure which you need? That's normal. Get in touch and we'll figure out the
-  right fit for where your manuscript is now.
+  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip.
 </p>
 
 <div class="services">
@@ -31,7 +31,7 @@
 </div>
 
 <p class="cta">
-  <a class="button" href="{base}/contact">Ask about your project</a>
+  <a class="button" href="{base}/contact">Lorem ipsum dolor</a>
 </p>
 
 <style>

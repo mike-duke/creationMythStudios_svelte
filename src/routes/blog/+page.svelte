@@ -12,15 +12,15 @@
   <title>Blog — {site.name}</title>
   <meta
     name="description"
-    content="Notes on writing, revising, and editing fiction."
+    content="Lorem ipsum dolor sit amet consectetur adipiscing elit."
   />
 </svelte:head>
 
-<h1>Blog</h1>
-<p class="lede">Notes on writing, revising, and working with an editor.</p>
+<h1>Lorem Ipsum</h1>
+<p class="lede">Dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
 
 {#if data.posts.length === 0}
-  <p>No posts yet — check back soon.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
 {:else}
   <ul class="post-list">
     {#each data.posts as post (post.slug)}

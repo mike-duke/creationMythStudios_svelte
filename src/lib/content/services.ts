@@ -12,35 +12,35 @@ export type Service = {
 
 export const services: Service[] = [
 	{
-		title: 'Developmental editing',
+		title: 'Lorem ipsum',
 		summary:
-			'Big-picture feedback on structure, pacing, character, and theme — the shape of the whole book.',
+			'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.',
 		details: [
-			'Editorial letter (typically 8–15 pages)',
-			'Margin notes throughout the manuscript',
-			'A follow-up call to talk through the revision plan'
+			'Lorem ipsum dolor sit amet consectetur',
+			'Adipiscing elit sed do eiusmod tempor',
+			'Incididunt ut labore et dolore magna'
 		],
-		rate: 'Priced per project after a sample read'
+		rate: 'Consectetur adipiscing elit'
 	},
 	{
-		title: 'Line editing',
+		title: 'Dolor sit amet',
 		summary:
-			'Sentence-level work on clarity, voice, rhythm, and flow, while keeping your style intact.',
+			'Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.',
 		details: [
-			'Tracked changes at the paragraph and sentence level',
-			'Notes on word choice, tone, and repetition',
-			'Guidance you can apply to the rest of your writing'
+			'Duis aute irure dolor in reprehenderit',
+			'In voluptate velit esse cillum dolore',
+			'Excepteur sint occaecat cupidatat'
 		],
-		rate: 'Per 1,000 words'
+		rate: 'Per mille verba'
 	},
 	{
-		title: 'Copyediting & proofreading',
-		summary: 'A careful final pass for grammar, consistency, and the small errors that slip through.',
+		title: 'Consectetur adipiscing',
+		summary: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur.',
 		details: [
-			'Grammar, punctuation, and spelling',
-			'Consistency (names, timelines, style choices)',
-			'A style sheet you can keep for future books'
+			'Sed ut perspiciatis unde omnis iste',
+			'Natus error sit voluptatem accusantium',
+			'Doloremque laudantium totam rem aperiam'
 		],
-		rate: 'Per 1,000 words'
+		rate: 'Per mille verba'
 	}
 ];

@@ -10,28 +10,28 @@
 
 <section class="hero">
   <p class="eyebrow">{site.tagline}</p>
-  <h1>Your story deserves a careful reader.</h1>
+  <h1>Lorem ipsum dolor sit amet consectetur.</h1>
   <p class="lede">
-    I help novelists and short-story writers shape stronger drafts — from
-    big-picture structure down to the rhythm of a single sentence. Thoughtful,
-    honest editing that keeps your voice intact.
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+    ex ea commodo consequat.
   </p>
   <p class="cta-row">
-    <a class="button" href="{base}/contact">Start a conversation</a>
-    <a class="secondary" href="{base}/services">See how I can help &rarr;</a>
+    <a class="button" href="{base}/contact">Lorem ipsum</a>
+    <a class="secondary" href="{base}/services">Dolor sit amet &rarr;</a>
   </p>
 </section>
 
 <section class="prose">
-  <h2>What I do</h2>
+  <h2>Lorem ipsum</h2>
   <p>
-    Every manuscript is at a different stage, so I meet your work where it is.
-    Whether you need a developmental read to untangle a plot, a line edit to
-    sharpen your prose, or a final copyedit before you submit, the goal is the
-    same: to make the book unmistakably yours, only clearer and more confident.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+    sunt in culpa qui officia deserunt mollit anim id est laborum, sed ut
+    perspiciatis unde omnis iste natus error.
   </p>
   <p>
-    <a href="{base}/about">Learn a bit about me &rarr;</a>
+    <a href="{base}/about">Sed ut perspiciatis &rarr;</a>
   </p>
 </section>
 
