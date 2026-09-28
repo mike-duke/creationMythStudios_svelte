@@ -46,12 +46,22 @@
   <meta name="description" content="Contact Mike about editing services" />
 </svelte:head>
 
-<h1>Contact Me</h1>
-<p class="lede">
-  I'd love to hear from you! Please leave me your name, email address, a brief
-  description of your project--including genre, medium, and how far along you
-  are in the process--and what kind of help you're looking for.
-</p>
+<div class="intro-row">
+  <enhanced:img
+    class="headshot"
+    src="$lib/images/headshot_square_compressed.jpg"
+    alt="Headshot of Mike"
+    sizes="200px"
+  />
+  <div class="intro-text">
+    <h1>Contact Me</h1>
+    <p class="lede">
+      I'd love to hear from you! Please leave your name, email address, a brief
+      description of your project--including genre, medium, and how far along
+      you are in the process--and what kind of help you're looking for.
+    </p>
+  </div>
+</div>
 
 {#if status === "success"}
   <div class="notice success" role="status">
@@ -98,22 +108,52 @@
   </p>
 {/if}
 
-<enhanced:img
-  class="contact-photo"
-  src="$lib/images/river_right_compressed.jpg"
-  alt="A mountain river running over a rocky bank, lined with evergreen trees and a pine-covered ridge under a clear blue sky"
-  sizes="min(736px, 100vw)"
-/>
-
 <style>
   .lede {
     color: var(--color-accent);
   }
+  /* Headshot on the left; h1 + lede stacked on the right. Split 50/50.
+     Stacks on narrow screens. */
+  .intro-row {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  .intro-row > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  /* `enhanced\:img` escapes the colon in the tag name for the CSS selector.
+     The circle fills its half of the row (up to a sensible max). */
+  .headshot {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  /* Right column: heading above the lede, both left-justified. */
+  .intro-text h1 {
+    margin: 0 0 0.5rem;
+    text-align: left;
+  }
+  .intro-text .lede {
+    margin: 0;
+  }
   form {
+    /* Full width of the container. */
     margin-top: 2rem;
-    max-width: 34rem;
-    /* Push the form box to the right edge of the container. */
-    margin-left: auto;
+  }
+  @media (max-width: 560px) {
+    .intro-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .intro-text h1 {
+      text-align: center;
+    }
   }
   form .button {
     /* Right-justify the submit button within the form. */
@@ -130,8 +170,6 @@
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.95rem;
-    /* Right-justify the label text above each full-width field. */
-    text-align: right;
   }
   input,
   textarea {
@@ -185,13 +223,6 @@
     font-size: 0.95rem;
     color: var(--color-muted);
     margin-top: 1.5rem;
-  }
-  /* `enhanced\:img` escapes the colon in the tag name for the CSS selector. */
-  .contact-photo {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    margin-top: 2.5rem;
+    text-align: right;
   }
 </style>
