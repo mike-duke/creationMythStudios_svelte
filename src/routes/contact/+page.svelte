@@ -98,6 +98,13 @@
   </p>
 {/if}
 
+<enhanced:img
+  class="contact-photo"
+  src="$lib/images/river_right_compressed.jpg"
+  alt="A mountain river running over a rocky bank, lined with evergreen trees and a pine-covered ridge under a clear blue sky"
+  sizes="min(736px, 100vw)"
+/>
+
 <style>
   .lede {
     color: var(--color-accent);
@@ -178,5 +185,13 @@
     font-size: 0.95rem;
     color: var(--color-muted);
     margin-top: 1.5rem;
+  }
+  /* `enhanced\:img` escapes the colon in the tag name for the CSS selector. */
+  .contact-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-top: 2.5rem;
   }
 </style>
