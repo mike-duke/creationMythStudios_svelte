@@ -43,23 +43,31 @@
 
 <svelte:head>
   <title>Contact — {site.name}</title>
-  <meta
-    name="description"
-    content="Get in touch about editing your manuscript."
-  />
+  <meta name="description" content="Contact Mike about editing services" />
 </svelte:head>
 
-<h1>Get in touch</h1>
-<p class="lede">
-  Tell me a little about your project — genre, length, and where it's at — and
-  I'll get back to you within a few business days.
-</p>
+<div class="intro-row">
+  <enhanced:img
+    class="headshot"
+    src="$lib/images/headshot_square_compressed.jpg"
+    alt="Headshot of Mike"
+    sizes="200px"
+  />
+  <div class="intro-text">
+    <h1>Contact Me</h1>
+    <p class="lede">
+      I'd love to hear from you! Please leave your name, email address, a brief
+      description of your project--including genre, medium, and how far along
+      you are in the process--and what kind of help you're looking for.
+    </p>
+  </div>
+</div>
 
 {#if status === "success"}
   <div class="notice success" role="status">
     <p><strong>Thanks — your message is on its way.</strong></p>
     <p>
-      I'll reply to you soon. In the meantime, feel free to email me directly at
+      I'll reply to you soon. Or, you can email me directly at:
       <a href="mailto:{site.email}">{site.email}</a>.
     </p>
   </div>
@@ -82,7 +90,7 @@
     </div>
 
     <div class="field">
-      <label for="project">About your project</label>
+      <label for="project">Tell me about your project and how I can help</label>
       <textarea id="project" name="message" rows="6" required></textarea>
     </div>
 
@@ -96,18 +104,61 @@
   </form>
 
   <p class="alt">
-    Prefer email? Reach me at <a href="mailto:{site.email}">{site.email}</a>.
+    Or email me directly at <a href="mailto:{site.email}">{site.email}</a>.
   </p>
 {/if}
 
 <style>
   .lede {
     color: var(--color-accent);
-    max-width: 34rem;
+  }
+  /* Headshot on the left; h1 + lede stacked on the right. Split 50/50.
+     Stacks on narrow screens. */
+  .intro-row {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  .intro-row > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  /* `enhanced\:img` escapes the colon in the tag name for the CSS selector.
+     The circle fills its half of the row (up to a sensible max). */
+  .headshot {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  /* Right column: heading above the lede, both left-justified. */
+  .intro-text h1 {
+    margin: 0 0 0.5rem;
+    text-align: left;
+  }
+  .intro-text .lede {
+    margin: 0;
   }
   form {
+    /* Full width of the container. */
     margin-top: 2rem;
-    max-width: 34rem;
+  }
+  @media (max-width: 560px) {
+    .intro-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .intro-text h1 {
+      text-align: center;
+    }
+  }
+  form .button {
+    /* Right-justify the submit button within the form. */
+    display: block;
+    margin-left: auto;
   }
   .field {
     margin-bottom: 1.25rem;
@@ -172,5 +223,6 @@
     font-size: 0.95rem;
     color: var(--color-muted);
     margin-top: 1.5rem;
+    text-align: right;
   }
 </style>
