@@ -1,6 +1,6 @@
 <script lang="ts">
   import "../app.css";
-  import { base } from "$app/paths";
+  import { asset, resolve } from "$app/paths";
   import { page } from "$app/state";
   import { afterNavigate } from "$app/navigation";
   import { navLinks, site } from "$lib/config";
@@ -17,18 +17,17 @@
     menuOpen = false;
   });
 
-  // Normalise a path for active-link comparison: strip the base prefix and any
-  // trailing slash so "/about/" matches the "/about" nav entry.
-  function isActive(href: string): boolean {
-    const current =
-      page.url.pathname.replace(base, "").replace(/\/$/, "") || "/";
-    const target = href.replace(/\/$/, "") || "/";
-    return current === target;
+  // Compare the current path to a nav route, ignoring trailing slashes.
+  // `resolve()` produces the full path (with base + trailing slash), matching
+  // what `page.url.pathname` looks like.
+  function isActive(href: (typeof navLinks)[number]["href"]): boolean {
+    const strip = (p: string) => p.replace(/\/$/, "") || "/";
+    return strip(page.url.pathname) === strip(resolve(href));
   }
 </script>
 
 <svelte:head>
-  <link rel="icon" href="{base}/favicon.svg" />
+  <link rel="icon" href={asset("/favicon.svg")} />
 </svelte:head>
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -41,7 +40,25 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="{base}/">{site.name}</a>
+    <a class="brand" href={resolve("/")} aria-label="{site.name} — home">
+      <!-- Lucide "book-open" icon. Placeholder until a custom logo (also SVG). -->
+      <svg
+        class="brand-icon"
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        aria-hidden="true"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 5v16m8.001-2A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2a5 5 0 0 1 4-2z"
+        />
+      </svg>
+    </a>
 
     <button
       class="nav-toggle"
@@ -59,7 +76,7 @@
         {#each navLinks as link (link.href)}
           <li>
             <a
-              href="{base}{link.href}"
+              href={resolve(link.href)}
               aria-current={isActive(link.href) ? "page" : undefined}
               class:active={isActive(link.href)}
             >
@@ -113,12 +130,16 @@
     padding-block: 0.9rem;
   }
   .brand {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
     color: var(--color-surface-text);
     text-decoration: none;
-    letter-spacing: -0.01em;
+  }
+  .brand-icon {
+    display: block;
+  }
+  .brand:hover {
+    color: var(--color-accent-strong);
   }
 
   /* --- Hamburger toggle button (mobile only) --- */

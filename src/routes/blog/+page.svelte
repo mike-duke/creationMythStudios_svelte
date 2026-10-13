@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import { site } from "$lib/config";
   import { formatDate } from "$lib/posts";
   import type { PageData } from "./$types";
@@ -26,7 +26,11 @@
     {#each data.posts as post (post.slug)}
       <li>
         <article>
-          <h2><a href="{base}/blog/{post.slug}">{post.title}</a></h2>
+          <h2>
+            <a href={resolve("/blog/[slug]", { slug: post.slug })}>
+              {post.title}
+            </a>
+          </h2>
           <p class="date">{formatDate(post.date)}</p>
           <p class="desc">{post.description}</p>
         </article>

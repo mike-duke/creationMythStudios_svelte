@@ -3,10 +3,10 @@
 
 export const site = {
 	name: 'Creation Myth Studios',
-	tagline: 'Dolor sit amet',
+	tagline: 'Upgrade Your Story',
 	// Used in <title> and meta descriptions.
 	description:
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		'Freelance developmental editing by Mike Duke, available at page rate or by the hour. Contact me at creationmythstudios@gmail.com',
 	// Your Formspree form endpoint. Replace with your real form ID.
 	// It looks like: https://formspree.io/f/xxxxxxxx
 	formspreeEndpoint: 'https://formspree.io/f/your-form-id',
@@ -14,9 +14,14 @@ export const site = {
 	email: 'creationmythstudios@gmail.com'
 };
 
-// Primary navigation. `href` values are root-relative; the layout prefixes them
-// with the configured base path so they work on GitHub Pages sub-paths.
-export const navLinks = [
+// Static routes used in the nav. Typed as the specific route literals (not the
+// broad RouteId, which includes dynamic routes like /blog/[slug] that require
+// params) so `resolve(link.href)` type-checks in the layout.
+type NavRoute = '/' | '/about' | '/services' | '/blog' | '/contact';
+
+// Primary navigation. `href` values are route IDs, resolved in the layout with
+// `resolve()` so they include the configured base path on GitHub Pages.
+export const navLinks: { href: NavRoute; label: string }[] = [
 	{ href: '/', label: 'Home' },
 	{ href: '/about', label: 'About' },
 	{ href: '/services', label: 'Services' },

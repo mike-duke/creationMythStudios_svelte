@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import { site } from "$lib/config";
+  import { home } from "$lib/content/home";
 </script>
 
 <svelte:head>
@@ -9,29 +10,30 @@
 </svelte:head>
 
 <section class="hero">
-  <p class="eyebrow">{site.tagline}</p>
-  <h1>Lorem ipsum dolor sit amet consectetur.</h1>
-  <p class="lede">
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-    ex ea commodo consequat.
-  </p>
-  <p class="cta-row">
-    <a class="button" href="{base}/contact">Lorem ipsum</a>
-    <a class="secondary" href="{base}/services">Dolor sit amet &rarr;</a>
+  <p class="eyebrow">{home.eyebrow}</p>
+  <enhanced:img
+    class="hero-image"
+    src="$lib/images/river_right_compressed.jpg"
+    alt="A mountain river running over a rocky bank, lined with evergreen trees and a pine-covered ridge under a clear blue sky"
+    sizes="min(736px, 100vw)"
+  />
+  <h1>{home.heading}</h1>
+  {#each home.lede as para}
+    <p class="lede">{para}</p>
+  {/each}
+  <p>
+    <a href={resolve("/about")}>Learn more about me &rarr;</a>
   </p>
 </section>
 
 <section class="prose">
-  <h2>Lorem ipsum</h2>
+  <h2>{home.prose.heading}</h2>
   <p>
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-    sunt in culpa qui officia deserunt mollit anim id est laborum, sed ut
-    perspiciatis unde omnis iste natus error.
+    {home.prose.para}
   </p>
-  <p>
-    <a href="{base}/about">Sed ut perspiciatis &rarr;</a>
+  <p class="cta-row">
+    <a class="button" href={resolve("/contact")}>Contact Me</a>
+    <a class="secondary" href={resolve("/services")}>See my services &rarr;</a>
   </p>
 </section>
 
@@ -48,6 +50,14 @@
     font-size: 0.85rem;
     color: var(--color-accent);
     margin: 0 0 0.5rem;
+  }
+  /* `enhanced\:img` escapes the colon in the tag name for the CSS selector. */
+  .hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 0.75rem 0 1.5rem;
   }
   .lede {
     font-size: 1.25rem;
