@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import { site } from "$lib/config";
   import { formatDate } from "$lib/posts";
   import type { PageData } from "./$types";
@@ -17,7 +17,7 @@
 </svelte:head>
 
 <article class="prose">
-  <p class="back"><a href="{base}/blog">&larr; All posts</a></p>
+  <p class="back"><a href={resolve("/blog")}>&larr; All posts</a></p>
   <h1>{data.meta.title}</h1>
   <p class="date">{formatDate(data.meta.date)}</p>
   <Content />

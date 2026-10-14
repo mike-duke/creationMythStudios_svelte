@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import { site } from "$lib/config";
   import { services } from "$lib/content/services";
 </script>
@@ -31,7 +31,7 @@
 </div>
 
 <p class="cta">
-  <a class="button" href="{base}/contact">Lorem ipsum dolor</a>
+  <a class="button" href={resolve("/contact")}>Lorem ipsum dolor</a>
 </p>
 
 <style>
