@@ -60,21 +60,21 @@
     {#if home.testimonialsHeading}
       <h2>{home.testimonialsHeading}</h2>
     {/if}
-    <ul>
+    <ul class="testimonial-track">
       {#each home.testimonials as testimonial (testimonial.clientName)}
-        <li class="testimonial">
+        <li class="testimonial-card">
           {#if testimonial.image}
             <enhanced:img
               class="testimonial-photo"
               src={testimonial.image}
               alt="Photo of {testimonial.clientName}"
-              sizes="80px"
+              sizes="96px"
             />
           {/if}
           <blockquote>
-            <p>{testimonial.quote}</p>
-            <cite>{testimonial.clientName}</cite>
+            <p class="quote">{testimonial.quote}</p>
           </blockquote>
+          <p class="client-name">{testimonial.clientName}</p>
         </li>
       {/each}
     </ul>
@@ -165,35 +165,53 @@
     text-align: right;
   }
 
-  .testimonials ul {
+  /* Horizontal track: cards sit in a row and scroll sideways when they
+     overflow. Holds as many cards as there are testimonials. */
+  .testimonial-track {
     list-style: none;
     margin: 1.5rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 1.5rem;
-  }
-  .testimonial {
+    padding: 0 0 1rem;
     display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
+    gap: 1.5rem;
+    overflow-x: auto;
+    /* Snap each card into view as you scroll. */
+    scroll-snap-type: x mandatory;
+    /* Room for the scrollbar without clipping card shadows. */
+    -webkit-overflow-scrolling: touch;
+  }
+  /* A single card: image on top, italic quote, name at the bottom. */
+  .testimonial-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem;
+    background: var(--color-surface);
+    color: var(--color-surface-text);
+    border-radius: var(--radius);
   }
   .testimonial-photo {
     flex: 0 0 auto;
-    width: 80px;
-    height: 80px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     object-fit: cover;
   }
-  .testimonial blockquote {
+  .testimonial-card blockquote {
     margin: 0;
+    flex: 1 1 auto;
   }
-  .testimonial blockquote p {
-    margin: 0 0 0.5rem;
+  .quote {
+    margin: 0;
+    font-style: italic;
   }
-  .testimonial cite {
+  .client-name {
+    margin: 0;
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-weight: 600;
     color: var(--color-muted);
-    font-style: normal;
   }
 </style>

@@ -1,11 +1,11 @@
 import type { Picture } from 'vite-imagetools';
 
 // To add a testimonial photo, import it here with the `?enhanced` query so it
-// gets optimized at build time, then assign it to a testimonial's `image`:
-//
-//   import janeDoe from '$lib/images/jane-doe.jpg?enhanced';
-//   ...
-//   { clientName: 'Jane Doe', quote: '...', image: janeDoe }
+// gets optimized at build time, then assign it to a testimonial's `image`
+// (see the first testimonial below for a working example).
+import mikeHeadshot from '$lib/images/headshot_square_compressed.jpg?enhanced';
+import dukeHeadshot from '$lib/images/headshot_square_compressed.jpg?enhanced';
+import guyHeadshot from '$lib/images/headshot_square_compressed.jpg?enahanced';
 
 export type Testimonial = {
 	clientName: string;
@@ -35,5 +35,21 @@ export const home: Home = {
 	servicesHeading: "Upgrade Your Story",
 	servicesPara: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
 	testimonialsHeading: "What Clients Are Saying....",
-	testimonials: []
+	testimonials: [
+		{
+			clientName: "Mike",
+			quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			image: mikeHeadshot,
+		},
+		{
+			clientName: "Duke",
+			quote: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+			image: dukeHeadshot
+		},
+		{
+			clientName: "The other guy",
+			quote: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+			image: guyHeadshot
+		}
+	]
 }
