@@ -12,35 +12,25 @@ export type Service = {
 
 export const services: Service[] = [
 	{
-		title: 'Lorem ipsum',
+		title: 'By the Page',
 		summary:
-			'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.',
+			'This is the best way to work with me if you have a finished or significantly completed manuscript. I\'ll read what you have and give you my comments and suggestions.',
 		details: [
-			'Lorem ipsum dolor sit amet consectetur',
-			'Adipiscing elit sed do eiusmod tempor',
-			'Incididunt ut labore et dolore magna'
+			'Turn around in about 10 business days',
+			'You\'ll get a written document including my comments and ideas on how to proceed',
+			'I\'ll also sit with you--in person or via Zoom--and discuss the document'
 		],
-		rate: 'Consectetur adipiscing elit'
+		rate: '4 cents per word'
 	},
 	{
-		title: 'Dolor sit amet',
+		title: 'By the Hour',
 		summary:
-			'Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+			'This is the best way to work with me if you are early in the process and aren\'t sure what to do next. We can chat either in person or via Zoom, go over your idea, and I can provide comments and suggestions on next steps.',
 		details: [
-			'Duis aute irure dolor in reprehenderit',
-			'In voluptate velit esse cillum dolore',
-			'Excepteur sint occaecat cupidatat'
+			'We can discuss your idea, partial manuscript, or passion project',
+			'I can guide you through the process of turning your idea into a story, including next steps for your writing process',
+			'I\'ll also send you a written document with the discussed suggestions for your reference'
 		],
-		rate: 'Per mille verba'
+		rate: '$200 per hour'
 	},
-	{
-		title: 'Consectetur adipiscing',
-		summary: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur.',
-		details: [
-			'Sed ut perspiciatis unde omnis iste',
-			'Natus error sit voluptatem accusantium',
-			'Doloremque laudantium totam rem aperiam'
-		],
-		rate: 'Per mille verba'
-	}
 ];
