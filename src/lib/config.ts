@@ -9,7 +9,7 @@ export const site = {
 		'Freelance developmental editing by Mike Duke, available at page rate or by the hour. Contact me at creationmythstudios@gmail.com',
 	// Your Formspree form endpoint. Replace with your real form ID.
 	// It looks like: https://formspree.io/f/xxxxxxxx
-	formspreeEndpoint: 'https://formspree.io/f/your-form-id',
+	formspreeEndpoint: 'https://formspree.io/f/xykrrqyl',
 	// Contact email shown on the site (optional).
 	email: 'creationmythstudios@gmail.com'
 };
