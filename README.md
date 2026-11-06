@@ -82,14 +82,21 @@ formspreeEndpoint: "https://formspree.io/f/your-form-id";
 3. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds the
    site and publishes it.
 
-The workflow sets `BASE_PATH` to `/<repo-name>` automatically, so the site works
-when served from `https://<username>.github.io/<repo-name>/`.
+The site is served from the custom domain `creationmythstudios.com`, so the
+workflow sets `BASE_PATH` to an empty string and `static/CNAME` holds the domain.
 
-### Moving to a custom domain later
+### Custom domain setup
 
-If you add a custom domain (or use a `<username>.github.io` repo), the site is
-served from the root, so set `BASE_PATH` to an empty string. In the workflow,
-change the build step's env to `BASE_PATH: ''`.
+1. At your domain registrar, add DNS records:
+   - Four `A` records on the apex (`@`) pointing to `185.199.108.153`,
+     `185.199.109.153`, `185.199.110.153` and `185.199.111.153`.
+   - A `CNAME` record for `www` pointing to `mike-duke.github.io`.
+2. In **Settings → Pages**, enter `creationmythstudios.com` as the custom domain
+   and, once the certificate is ready, tick **Enforce HTTPS**.
+
+To go back to a project page at `https://<username>.github.io/<repo-name>/`,
+set `BASE_PATH` in the workflow to `'/${{ github.event.repository.name }}'` and
+remove `static/CNAME`.
 
 ```
 
