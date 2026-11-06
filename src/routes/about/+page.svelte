@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import { site } from "$lib/config";
   // mdsvex compiles this .md file into a Svelte component at build time.
   // We import it and render it like any other component.
@@ -15,21 +16,22 @@
 
 <article class="prose">
   <!--
-    Optimized image example. At build time <enhanced:img> generates avif/webp
-    plus multiple sizes and sets width/height automatically. Provide the source
-    at ~2x the display size (this one is 1450px wide for a ~700px column).
-    Swap the src for your own file in src/lib/images/ and update the alt text.
-    The alt text should describe the image for screen readers; use alt="" only
-    for purely decorative images.
+    At build time <enhanced:img> generates avif/webp in multiple sizes and sets
+    width/height automatically. Keep alt text descriptive; use alt="" only for
+    purely decorative images.
   -->
   <enhanced:img
     class="feature"
-    src="$lib/images/placeholder.jpg"
-    alt="Placeholder image — replace with a real photo and a descriptive alt text"
+    src="$lib/images/river_right_compressed_small.jpg"
+    alt="A clear mountain river flowing past a rocky, boulder-strewn bank, with evergreen-covered slopes and a rocky ridge beneath a bright blue sky"
     sizes="min(700px, 100vw)"
   />
 
   <About />
+
+  <p class="cta-row">
+    <a class="button" href={resolve("/contact")}>Contact Me</a>
+  </p>
 </article>
 
 <style>
@@ -42,5 +44,15 @@
     height: auto;
     border-radius: var(--radius);
     margin-bottom: 2rem;
+  }
+
+  /* Right-justified contact button, matching the home page. */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem 1.5rem;
+    margin-top: 1.75rem;
   }
 </style>

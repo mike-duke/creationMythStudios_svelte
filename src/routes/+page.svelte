@@ -11,11 +11,10 @@
 </svelte:head>
 
 <section class="hero">
-  <p class="eyebrow">{home.eyebrow}</p>
   <enhanced:img
     class="hero-image"
-    src="$lib/images/river_right_compressed.jpg"
-    alt="A mountain river running over a rocky bank, lined with evergreen trees and a pine-covered ridge under a clear blue sky"
+    src="$lib/images/mountain_path_compressed_edited.jpg"
+    alt="A narrow dirt trail winding through a green meadow toward a stand of pine and aspen trees under a partly cloudy blue sky"
     sizes="min(736px, 100vw)"
   />
   <h1>{home.siteHeading}</h1>
@@ -84,14 +83,6 @@
 <style>
   .hero {
     padding-block: 1rem 0;
-  }
-  .eyebrow {
-    font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    color: var(--color-accent);
-    margin: 0 0 0.5rem;
   }
   /* `enhanced\:img` escapes the colon in the tag name for the CSS selector. */
   .hero-image {

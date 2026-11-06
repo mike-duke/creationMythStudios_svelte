@@ -40,7 +40,7 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href={resolve("/")} aria-label="{site.name} — home">
+    <a class="brand" href={resolve("/")}>
       <!-- Lucide "book-open" icon. Placeholder until a custom logo (also SVG). -->
       <svg
         class="brand-icon"
@@ -58,6 +58,7 @@
           d="M12 5v16m8.001-2A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2a5 5 0 0 1 4-2z"
         />
       </svg>
+      <span class="brand-name">{site.name}</span>
     </a>
 
     <button
@@ -132,11 +133,18 @@
   .brand {
     display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
     color: var(--color-surface-text);
     text-decoration: none;
   }
   .brand-icon {
     display: block;
+  }
+  .brand-name {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
   }
   .brand:hover {
     color: var(--color-accent-strong);
