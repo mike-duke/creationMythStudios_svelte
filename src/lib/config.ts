@@ -15,9 +15,10 @@ export const site = {
 };
 
 // Static routes used in the nav. Typed as the specific route literals (not the
-// broad RouteId, which includes dynamic routes like /blog/[slug] that require
-// params) so `resolve(link.href)` type-checks in the layout.
-type NavRoute = '/' | '/about' | '/services' | '/blog' | '/contact';
+// broad RouteId, which includes any dynamic routes that require params) so
+// `resolve(link.href)` type-checks in the layout.
+// When you add a page (e.g. a blog), add its route here and to navLinks below.
+type NavRoute = '/' | '/about' | '/services' | '/contact';
 
 // Primary navigation. `href` values are route IDs, resolved in the layout with
 // `resolve()` so they include the configured base path on GitHub Pages.
@@ -25,6 +26,5 @@ export const navLinks: { href: NavRoute; label: string }[] = [
 	{ href: '/', label: 'Home' },
 	{ href: '/about', label: 'About' },
 	{ href: '/services', label: 'Services' },
-	{ href: '/blog', label: 'Blog' },
 	{ href: '/contact', label: 'Contact' }
 ];

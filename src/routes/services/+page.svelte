@@ -9,10 +9,10 @@
   <meta name="description" content="Lorem ipsum dolor sit amet consectetur." />
 </svelte:head>
 
-<h1>Lorem Ipsum</h1>
+<h1>Ways to Work With Me</h1>
 <p class="lede">
-  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip.
+  Here are the best ways to work with me. If you don't see a method that works
+  for you, send me a message and we can chat!
 </p>
 
 <div class="services">
@@ -31,7 +31,7 @@
 </div>
 
 <p class="cta">
-  <a class="button" href={resolve("/contact")}>Lorem ipsum dolor</a>
+  <a class="button" href={resolve("/contact")}>Contact Me</a>
 </p>
 
 <style>
@@ -54,6 +54,8 @@
   }
   .card h2 {
     margin-top: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
   .summary {
     color: var(--color-surface-text);
@@ -61,6 +63,8 @@
   .card ul {
     margin: 0.75rem 0 1rem;
     padding-left: 1.25rem;
+    /* Darker teal: readable on the light card; bullets inherit this color. */
+    color: var(--color-accent-strong);
   }
   .card li {
     margin-bottom: 0.35rem;
@@ -70,8 +74,11 @@
     font-size: 0.95rem;
     color: var(--color-muted);
     margin: 0;
+    text-align: right;
   }
   .cta {
     margin-top: 2.5rem;
+    /* Right-justify the contact button, matching the home and about pages. */
+    text-align: right;
   }
 </style>
