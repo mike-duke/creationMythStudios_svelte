@@ -52,6 +52,10 @@
   </p>
 </section>
 
+<!--
+  Testimonials are hidden until there are real ones. To restore, remove this
+  comment wrapper (and the matching one around the testimonial CSS below).
+
 {#if home.testimonials.length > 0}
   <Divider />
 
@@ -79,6 +83,9 @@
     </ul>
   </section>
 {/if}
+-->
+
+<!-- Testimonial CSS is commented out below along with the markup. -->
 
 <style>
   .hero {
@@ -156,53 +163,55 @@
     text-align: right;
   }
 
-  /* Horizontal track: cards sit in a row and scroll sideways when they
-     overflow. Holds as many cards as there are testimonials. */
-  .testimonial-track {
-    list-style: none;
-    margin: 1.5rem 0 0;
-    padding: 0 0 1rem;
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    /* Snap each card into view as you scroll. */
-    scroll-snap-type: x mandatory;
-    /* Room for the scrollbar without clipping card shadows. */
-    -webkit-overflow-scrolling: touch;
-  }
-  /* A single card: image on top, italic quote, name at the bottom. */
-  .testimonial-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    padding: 1.75rem 1.5rem;
-    background: var(--color-surface);
-    color: var(--color-surface-text);
-    border-radius: var(--radius);
-  }
-  .testimonial-photo {
-    flex: 0 0 auto;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .testimonial-card blockquote {
-    margin: 0;
-    flex: 1 1 auto;
-  }
-  .quote {
-    margin: 0;
-    font-style: italic;
-  }
-  .client-name {
-    margin: 0;
-    font-family: var(--font-body);
-    font-weight: 600;
-    color: var(--color-muted);
-  }
+  /*
+   * Testimonial styles, hidden along with the markup. Restore both together.
+   *
+   * Horizontal track: cards sit in a row and scroll sideways when they
+   * overflow. Holds as many cards as there are testimonials.
+   * .testimonial-track {
+   *   list-style: none;
+   *   margin: 1.5rem 0 0;
+   *   padding: 0 0 1rem;
+   *   display: flex;
+   *   gap: 1.5rem;
+   *   overflow-x: auto;
+   *   scroll-snap-type: x mandatory;
+   *   -webkit-overflow-scrolling: touch;
+   * }
+   * A single card: image on top, italic quote, name at the bottom.
+   * .testimonial-card {
+   *   flex: 0 0 280px;
+   *   scroll-snap-align: start;
+   *   display: flex;
+   *   flex-direction: column;
+   *   align-items: center;
+   *   text-align: center;
+   *   gap: 1rem;
+   *   padding: 1.75rem 1.5rem;
+   *   background: var(--color-surface);
+   *   color: var(--color-surface-text);
+   *   border-radius: var(--radius);
+   * }
+   * .testimonial-photo {
+   *   flex: 0 0 auto;
+   *   width: 96px;
+   *   height: 96px;
+   *   border-radius: 50%;
+   *   object-fit: cover;
+   * }
+   * .testimonial-card blockquote {
+   *   margin: 0;
+   *   flex: 1 1 auto;
+   * }
+   * .quote {
+   *   margin: 0;
+   *   font-style: italic;
+   * }
+   * .client-name {
+   *   margin: 0;
+   *   font-family: var(--font-body);
+   *   font-weight: 600;
+   *   color: var(--color-muted);
+   * }
+   */
 </style>
