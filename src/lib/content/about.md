@@ -14,4 +14,4 @@ My ideal clients aren't Hollywood tastemakers or best-selling novelists. They ar
 
 As a writer, I also know the struggle that comes with putting thoughts down on the page. Even more so, I know how hard it is when you're neurodivergent, struggling with your mental health, dealing with traumatic content or even just trying to push through your trauma to get the words out. This is not a place of tough love. My goal is to create a safe space where writers can receive praise and constructive criticism without fear of being treated like they are wasting someone's time.
 
-If any of this strikes a chord with you, please send a message. I would love to work with you.
+If any of this strikes a chord, please send a message. I would love to work with you.

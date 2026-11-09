@@ -33,7 +33,7 @@ export const home: Home = {
     "My name is Mike. I'm a writer. I've been calling myself a writer for over 30 years. In that time, I've been learning what makes a great story, and more importantly, how to help other writers make their stories great. And now, I want to help you, too!",
   servicesHeading: "Upgrade Your Story",
   servicesPara:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+    "I want to help you take your project from good to great. Together, we will look at character, plot, and setting to strengthen your story and make it shine. It doesn't matter if you are just getting started with an idea or holding a finished manuscript, we can work together to make it everything you want it to be.",
   testimonialsHeading: "What Clients Are Saying....",
   testimonials: [
     {
